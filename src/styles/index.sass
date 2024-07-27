@@ -1,0 +1,88 @@
+
+.UIState-module
+    position: absolute
+    left: 0
+    top: 0
+
+    color: #fff
+    font-family: 'Arial'
+    height: 100%
+    pointer-events: none
+    user-select: none
+    width: 100%
+    
+    & *
+        pointer-events: all
+
+    & button
+        background: #00999e
+        border: none
+        box-shadow: #00c2c9 -4px 0px
+        color: #fff
+        cursor: pointer
+        font-family: 'Arial'
+        font-size: 16px
+        height: 32px
+
+        &:hover
+            background: #00c2c9
+            border: none
+            box-shadow: #00f0f8 -4px 0px
+
+.Buttons-module
+    align-items: center
+    background: rgba(#000, 0.25)
+    display: flex
+    flex-direction: column
+    gap: 8px
+    justify-content: center
+    width: 100%
+
+    padding: 8px
+
+    & button
+        margin-left: 4px
+        width: calc(100% - 4px)
+
+    &.final
+        position: absolute
+        left: 0
+        bottom: 0
+
+    &.vert
+        flex-direction: row
+        width: calc(100% - 16px)
+
+        & button
+            width: auto
+        
+//
+.InitNewWorld-module
+    align-items: center
+    background: rgba(#000, 0.5)
+    display: flex
+    flex-direction: column
+    margin: auto
+    padding: 8px
+    position: relative
+
+.MainMenu-module
+    align-items: center
+    background: rgba(#000, 0.5)
+    display: flex
+    flex-direction: column
+    margin: auto
+    padding: 8px
+    width: 256px
+    height: calc(100% - 16px)
+
+.NewWorldSettings-module
+    align-items: center
+    background: rgba(#000, 0.5)
+    display: flex
+    flex-direction: column
+    margin: auto
+    padding: 8px
+    position: relative
+    width: 512px
+    height: calc(100% - 16px)
