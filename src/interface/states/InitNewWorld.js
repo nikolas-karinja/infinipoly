@@ -12,6 +12,8 @@ const InitNewWorldState = () =>
     {
         EVENTS.AddListener('init new world', () =>
         {
+            OCTAVIA.SelectScene('Main')
+
             GAME_SETTINGS.Private.chunkToLoadBeforeStart 
                 = Math.pow((GAME_SETTINGS.Private.initTerrainChunkRadius * 2) + 1, 2) 
             GAME_SETTINGS.Private.isNewWorld = true

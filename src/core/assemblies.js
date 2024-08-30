@@ -5,9 +5,15 @@ export const OCTAVIA_ASSEMBLIES = {
         components: {
             'World Camera': {},
             'Terrain': {},
-            'World Lighting': {
-                addShadowHelper: false,
-            },
+            'World Lighting': {},
+        }
+    },
+    'Main Menu World': {
+        gameScene: 'Main Menu',
+        components: {
+            'Main Menu Camera': {},
+            'Main Menu Lighting': {},
+            'Main Menu Model': {},
         }
     }
 }

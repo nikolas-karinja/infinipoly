@@ -98,20 +98,29 @@ class Terrain extends OCTAVIA.Core.GameObjectComponent
         {
             if (!this.MacroChunksGLGroup.visible)
             {
+                
+                GAME_SETTINGS.Private.inMacroView = true
+
                 this.inMacroView = true
 
                 this.MacroChunksGLGroup.visible = true
                 this.MicroChunksGLGroup.visible = false
+
+                EVENTS.DispatchEvent('view level changed')
             }
         }
         else
         {
             if (this.MacroChunksGLGroup.visible)
             {
+                GAME_SETTINGS.Private.inMacroView = false
+
                 this.inMacroView = false
 
                 this.MacroChunksGLGroup.visible = false
                 this.MicroChunksGLGroup.visible = true
+
+                EVENTS.DispatchEvent('view level changed')
             }
         }
 
@@ -133,19 +142,17 @@ class Terrain extends OCTAVIA.Core.GameObjectComponent
             (this.ChunkInView.x !== tx || this.ChunkInView.y !== ty))
         {
             const _renderDistance = GAME_SETTINGS.Public.Game.renderDistance[0]
-            const _simDistance = GAME_SETTINGS.Public.Game.simulationDistance[0]
             const _newChunksInView = []
 
-            this.chunksInSimulation = []
             this.ChunkInView.set(tx, ty)
 
             EVENTS.DispatchEvent('chunk in view updated')
 
-            for (let i = 0, x = -_simDistance, y = -_simDistance; i < Math.pow((_simDistance * 2) + 1, 2); i++, x++)
+            for (let i = 0, x = -_renderDistance, y = -_renderDistance; i < Math.pow((_renderDistance * 2) + 1, 2); i++, x++)
             {
-                if (x > _simDistance)
+                if (x > _renderDistance)
                 {
-                    x = -_simDistance
+                    x = -_renderDistance
                     y++
                 }
 
@@ -155,14 +162,7 @@ class Terrain extends OCTAVIA.Core.GameObjectComponent
 
                 if (this.Chunks[_chunkName])
                 {
-                    this.chunksInSimulation.push(_chunkName)
-                    this.Chunks[_chunkName].UpdateSimulation()
-
-                    if (_tx >= tx - _renderDistance && _tx <= tx + _renderDistance &&
-                        _ty >= ty - _renderDistance && _ty <= ty + _renderDistance)
-                    {
-                        _newChunksInView.push(_chunkName)
-                    }
+                    _newChunksInView.push(_chunkName)
                 }
 
                 for (let c of this.chunksInView)

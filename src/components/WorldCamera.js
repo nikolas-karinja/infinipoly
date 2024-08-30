@@ -21,7 +21,7 @@ class WorldCamera extends OCTAVIA.Core.GameObjectComponent
     InitComponent ()
     {
         // setup camera
-        this.Camera.position.set(-7, 21, -14)
+        this.Camera.position.set(7, 21, 14)
 
         RENDER.SetCamera(this.Camera)
 

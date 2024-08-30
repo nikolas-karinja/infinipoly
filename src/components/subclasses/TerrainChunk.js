@@ -19,6 +19,7 @@ class TerrainChunk
         this.MacroMesh = null
         this.MicroGeo = null
         this.MicroMesh = null
+        this.SpriteMesh = null
         this.WaterMesh = null
         this.VegetationMesh = null
         this.cellHeights = []
@@ -88,6 +89,7 @@ class TerrainChunk
 
                 this.MacroGeo = new TerrainPlaneGeometry(..._macroArgs)
                 this.MacroMesh = new OCTAVIA.Core.Mesh(this.MacroGeo, _Mat)
+                this.MacroMesh.castShadow = true
                 this.MacroMesh.receiveShadow = true
                 
                 this.MicroGeo = new TerrainPlaneGeometry(..._microArgs)
@@ -129,23 +131,27 @@ class TerrainChunk
 
                 let _Model = MODELS.FindModel('Vegetation')
 
-                if (_Position.y > GAME_SETTINGS.Private.seaLevel)
+                if (_Position.y > GAME_SETTINGS.Private.seaLevel && _Position.y < 1.2)
                 {
-                    if (Math.random() < GAME_SETTINGS.Private.vegetationSpreadLand * 0.01)
+                    const _spawnChance = Math.random() * 100
+
+                    if (_spawnChance < GAME_SETTINGS.Private.vegetationSpreadLand * Math.pow((_Position.y * 2), 2))
                     {
                         if (_chance < 100)
                             _meshName = 'Weed'
-                        if (_chance < 50)
-                            _meshName = OCTAVIA.ArrayUtils.getRandomItem(['Green_Pine'])
-                        if (_chance < 20)
-                            _meshName = 'Orange_Birch'
-                        if (_chance < 15)
+                        if (_chance < 25)
+                            _meshName = OCTAVIA.ArrayUtils.getRandomItem(['Pine'])
+                        if (_chance < 10)
+                            _meshName = 'Green_Birch'
+                        if (_chance < 7)
                             _meshName = 'Rock'
                     }
                 }
-                else
+                else if (_Position.y < GAME_SETTINGS.Private.seaLevel)
                 {
-                    if (Math.random() < GAME_SETTINGS.Private.vegetationSpreadSea * 0.01)
+                    const _spawnChance = Math.random() * 100
+
+                    if (_spawnChance < GAME_SETTINGS.Private.vegetationSpreadSea)
                     {   
                         if (_chance < 100)
                             _meshName = 'Weed'
@@ -156,10 +162,11 @@ class TerrainChunk
 
                 if (_meshName)
                 {
-                    _Geo = _Model.FindMesh(_meshName).geometry.clone()
+                    const _scale = _cellSize * OCTAVIA.MathUtils.randFloat(0.5, 0.75)
 
+                    _Geo = _Model.FindMesh(_meshName).geometry.clone()
                     _Geo.rotateY(Math.random() * (Math.PI * 2))
-                    _Geo.scale(_cellSize ,_cellSize, _cellSize)
+                    _Geo.scale(_scale ,_scale, _scale)
                     _Geo.translate(_Position.x, _Position.y, _Position.z)
                         
                     _geometries.push(_Geo)
@@ -174,6 +181,7 @@ class TerrainChunk
                 
                 this.VegetationMesh = new OCTAVIA.Core.Mesh(_Geo, MATERIALS.FindMaterial('Vegetation'))
                 this.VegetationMesh.castShadow = true
+                this.VegetationMesh.receiveShadow = true
                 this.VegetationMesh.rotateX(Math.PI / 2)
                 this.VegetationMesh.raycastEnabled = false
 
@@ -201,9 +209,19 @@ class TerrainChunk
          */
     }
 
+    CreateSprite ()
+    {
+        this.SpriteMesh = new THREE.Sprite(MATERIALS.FindMaterial('Terrain Chunk Icon'))
+        this.SpriteMesh.position.set(this.wx, 0, this.wz)
+        this.SpriteMesh.scale.setScalar(0.03)
+
+        this.Component.MacroChunksGLGroup.add(this.SpriteMesh)
+    }
+
     async Init (name)
     {
         await this.CreateNoise()
+        this.CreateSprite()
         this.CreateMeshes()
         await this.CreateVegetation()
         this.CreateWater()
@@ -234,6 +252,9 @@ class TerrainChunk
     {
         if (this.Component.inMacroView)
         {
+            if (this.SpriteMesh)
+                this.SpriteMesh.visible = !this.MacroMesh.visible
+
             if (this.WaterMesh)
                 this.WaterMesh.visible = this.MacroMesh.visible
         }

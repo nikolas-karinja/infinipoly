@@ -1,4 +1,4 @@
-import { EVENTS, OCTAVIA, RENDER } from '@little-island/octavia-engine';
+import { EVENTS, MATERIALS, OCTAVIA, RENDER } from '@little-island/octavia-engine';
 import { OrbitControls } from 'three/addons'
 import { GAME_SETTINGS } from '../core';
 import * as THREE from 'three'
@@ -9,8 +9,8 @@ class WorldLighting extends OCTAVIA.Core.GameObjectComponent
     {
         super(...args)
 
-        this.Sun = new THREE.DirectionalLight(0xffffff, 2)
-        this.Hemi = new THREE.AmbientLight(0xffffff, 2)
+        this.Sun = new THREE.DirectionalLight(0xffffff, 1.75)
+        this.Hemi = new THREE.AmbientLight(0xffffff, 1.5)
         this.ShadowHelper = null
         this.CameraComponent = this.GetComponent('World Camera')
         this.TerrainComponent = this.GetComponent('Terrain')
@@ -30,8 +30,8 @@ class WorldLighting extends OCTAVIA.Core.GameObjectComponent
         this.Sun.shadow.camera.right = 12
         this.Sun.shadow.camera.top = 12
         this.Sun.shadow.camera.bottom = -12
-        this.Sun.shadow.mapSize.width = 1024
-        this.Sun.shadow.mapSize.height = 1024
+        this.Sun.shadow.mapSize.width = 2048
+        this.Sun.shadow.mapSize.height = 2048
         this.Sun.shadow.camera.near = 0.1
         this.Sun.shadow.camera.far = 50
 
@@ -48,6 +48,9 @@ class WorldLighting extends OCTAVIA.Core.GameObjectComponent
 
     InitGameObject ()
     {
+        this.SceneGL.background = MATERIALS.FindTexture('Sky')
+        this.SceneGL.environment = MATERIALS.FindTexture('Sky')
+
         this.SceneGL.add(this.Sun)
         this.SceneGL.add(this.Sun.target)
         this.SceneGL.add(this.Hemi)
