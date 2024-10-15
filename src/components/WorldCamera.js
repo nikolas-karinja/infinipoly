@@ -23,13 +23,18 @@ class WorldCamera extends OCTAVIA.Core.GameObjectComponent
         // setup camera
         this.Camera.position.set(7, 21, 14)
 
-        RENDER.SetCamera(this.Camera)
 
         // setup controls
         this.Controls.screenSpacePanning = false
         // this.Controls.mouseButtons.LEFT = null
         this.Controls.mouseButtons.MIDDLE = THREE.MOUSE.PAN
         this.Controls.mouseButtons.RIGHT = null
+    }
+
+    InitGameObject ()
+    {
+        if (this.GameObject.GameScene)
+            this.GameObject.GameScene.SetCamera(this.Camera)
     }
 
     Update ()

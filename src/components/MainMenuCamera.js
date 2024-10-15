@@ -1,4 +1,4 @@
-import { OCTAVIA, RENDER } from '@little-island/octavia-engine';
+import { GAME_SCENES, OCTAVIA, RENDER } from '@little-island/octavia-engine';
 import { OrbitControls } from 'three/addons'
 import { GAME_SETTINGS } from '../core';
 import * as THREE from 'three'
@@ -23,13 +23,17 @@ class MainMenuCamera extends OCTAVIA.Core.GameObjectComponent
         // setup camera
         this.Camera.position.set(0, 1, 1)
 
-        RENDER.SetCamera(this.Camera)
-
         // setup controls
         this.Controls.screenSpacePanning = false
         this.Controls.enablePan = false
         this.Controls.enableRotate = false
         this.Controls.enableZoom = false
+    }
+
+    InitGameObject ()
+    {
+        if (this.GameObject.GameScene)
+            this.GameObject.GameScene.SetCamera(this.Camera)
     }
 
     Update ()
