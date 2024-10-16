@@ -10,13 +10,18 @@ const NewWorldSettingsState = () =>
     const onBack = () =>
     {
         EVENTS.DispatchEvent('back to main menu')
+        
         setVisibility(false)
     }
 
     const onCreate = () =>
     {
+        OCTAVIA.AssembleGameObject('Atmosphere')
+        OCTAVIA.AssembleGameObject('Sun')
         OCTAVIA.AssembleGameObject('World')
+
         EVENTS.DispatchEvent('init new world')
+
         setVisibility(false)
     }
 

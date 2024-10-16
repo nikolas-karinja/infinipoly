@@ -97,7 +97,7 @@ class Terrain extends OCTAVIA.Core.ScriptComponent
 
         const _Intersects = this.Raycaster.intersectObjects(this.MicroChunksGLGroup.children)
 
-        const _inMacroView = GAME_SETTINGS.Private.cameraProjection === CONSTANTS.CameraTypes.PERSPECTIVE ? 
+        const _inMacroView = GAME_SETTINGS.Private.cameraProjection === CONSTANTS.Camera.PERSPECTIVE_PROJECTION ? 
             GAME_SETTINGS.Private.currentZoomLevel <= GAME_SETTINGS.Private.macroZoomLevel : 
             this.Camera.zoom > 2
 

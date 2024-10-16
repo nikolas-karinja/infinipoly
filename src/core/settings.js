@@ -8,13 +8,13 @@ export const OCTAVIA_SETTINGS = {
 
 export const GAME_SETTINGS = {
     Private: {
-        cameraProjection: CONSTANTS.CameraTypes.ORTHOGRAPHIC,
+        cameraProjection: CONSTANTS.Camera.ORTHOGRAPHIC_PROJECTION,
         chunkScaleMacro: 4, // chunk size micro mult (when zoomed in)
         chunkCellsMicro: 8, // chunk detail (when zoomed out)
         chunkCellSize: 0.1, // chunk divisions in world units
         chunkToLoadBeforeStart: 0, // if loading a world, this number is based on the chunk in the save file
         currentZoomLevel: 0, // current zoom level that the camera controls are at (updated every frame)
-        initTerrainChunkRadius: 5,
+        initTerrainChunkRadius: 7,
         isNewWorld: false, // value set to true when a brand-new world is created
         macroZoomLevel: 20, // the zoom level when the macro-terrain should be visible
         noiseAmplitude: 1.5,

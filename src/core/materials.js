@@ -85,7 +85,7 @@ export const OCTAVIA_MATERIALS = {
             transparent: true,
             // shininess: 500,
             roughness: 0,
-            metalness: 1,
+            metalness: 0.25,
             envMapIntensity: 100,
             onBeforeCompile: (shader) =>
             {

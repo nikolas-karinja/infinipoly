@@ -24,6 +24,9 @@ class MainMenuModel extends OCTAVIA.Core.ScriptComponent
 
     InitGameObject ()
     {
+        this.SceneGL.background = MATERIALS.FindTexture('Sky')
+        this.SceneGL.environment = MATERIALS.FindTexture('Sky')
+
         this.CreateWater()
     }
 

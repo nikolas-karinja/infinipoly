@@ -213,7 +213,7 @@ class TerrainChunk
     {
         this.SpriteMesh = new THREE.Sprite(MATERIALS.FindMaterial('Terrain Chunk Icon'))
         this.SpriteMesh.position.set(this.wx, 0, this.wz)
-        this.SpriteMesh.scale.setScalar(GAME_SETTINGS.Private.cameraProjection === CONSTANTS.CameraTypes.PERSPECTIVE ? 0.03 : 0.5)
+        this.SpriteMesh.scale.setScalar(GAME_SETTINGS.Private.cameraProjection === CONSTANTS.Camera.PERSPECTIVE_PROJECTION ? 0.03 : 0.5)
 
         this.Component.MacroChunksGLGroup.add(this.SpriteMesh)
     }

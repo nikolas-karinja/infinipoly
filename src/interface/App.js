@@ -17,6 +17,8 @@ const App = () =>
                 OCTAVIA.AssembleGameObject('Main Menu World')
 
                 OCTAVIA.SelectScene('Main Menu')
+
+                console.log(OCTAVIA)
             }}>
             <MainMenuState />
             <NewWorldSettingsState />
