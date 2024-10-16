@@ -1,16 +1,17 @@
-import { EVENTS, MATERIALS, OCTAVIA, TIME } from "@little-island/octavia-engine";
+import { CONSTANTS, EVENTS, MATERIALS, OCTAVIA, TIME } from "@little-island/octavia-engine";
 import { GAME_SETTINGS, UTILS } from "../core";
 import { Perlin } from 'three-noise'
 import * as THREE from 'three'
 import { TerrainChunk } from "./subclasses/TerrainChunk";
 
-class Terrain extends OCTAVIA.Core.GameObjectComponent
+class Terrain extends OCTAVIA.Core.ScriptComponent
 {
     constructor(...args)
     {
         super(...args)
 
-        this.Camera = this.GetComponent('World Camera').Camera
+        this.Camera = this.GetComponent('Camera').Camera
+        this.ControlsComponent = this.GetComponent('Orbit Controls')
         this.Chunks = {}
         this.chunksLoaded = 0
         this.ChunkInView = new THREE.Vector2()
@@ -90,11 +91,17 @@ class Terrain extends OCTAVIA.Core.GameObjectComponent
 
     Update ()
     {
+        GAME_SETTINGS.Private.currentZoomLevel = this.ControlsComponent.GetDistance()
+
         this.Raycaster.setFromCamera(this.ScreenCenterVec2, this.Camera)
 
         const _Intersects = this.Raycaster.intersectObjects(this.MicroChunksGLGroup.children)
 
-        if (GAME_SETTINGS.Private.currentZoomLevel <= GAME_SETTINGS.Private.macroZoomLevel)
+        const _inMacroView = GAME_SETTINGS.Private.cameraProjection === CONSTANTS.CameraTypes.PERSPECTIVE ? 
+            GAME_SETTINGS.Private.currentZoomLevel <= GAME_SETTINGS.Private.macroZoomLevel : 
+            this.Camera.zoom > 2
+
+        if (_inMacroView)
         {
             if (!this.MacroChunksGLGroup.visible)
             {

@@ -1,7 +1,7 @@
 import { EVENTS, MATERIALS, OCTAVIA } from '@little-island/octavia-engine';
 import * as THREE from 'three'
 
-class MainMenuLighting extends OCTAVIA.Core.GameObjectComponent
+class MainMenuLighting extends OCTAVIA.Core.ScriptComponent
 {
     constructor (...args)
     {

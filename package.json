@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@little-island/octavia-engine": "^0.0.62",
+    "@little-island/octavia-engine": "^0.0.70",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "update-engine": "npm uninstall --save @little-island/octavia-engine && npm i --save @little-island/octavia-engine"
+    "update-engine": "npm uninstall --save @little-island/octavia-engine && npm i --save @little-island/octavia-engine@latest"
   },
   "eslintConfig": {
     "extends": [

@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { TerrainPlaneGeometry } from './TerrainPlaneGeometry'
-import {OCTAVIA, MATERIALS, WORKERS, EVENTS, MODELS } from '@little-island/octavia-engine'
+import {OCTAVIA, MATERIALS, WORKERS, EVENTS, MODELS, CONSTANTS } from '@little-island/octavia-engine'
 import { GAME_SETTINGS } from "../../core";
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import { TerrainWaterGeometry } from './TerrainWaterGeometry';
@@ -213,7 +213,7 @@ class TerrainChunk
     {
         this.SpriteMesh = new THREE.Sprite(MATERIALS.FindMaterial('Terrain Chunk Icon'))
         this.SpriteMesh.position.set(this.wx, 0, this.wz)
-        this.SpriteMesh.scale.setScalar(0.03)
+        this.SpriteMesh.scale.setScalar(GAME_SETTINGS.Private.cameraProjection === CONSTANTS.CameraTypes.PERSPECTIVE ? 0.03 : 0.5)
 
         this.Component.MacroChunksGLGroup.add(this.SpriteMesh)
     }

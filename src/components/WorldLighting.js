@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/addons'
 import { GAME_SETTINGS } from '../core';
 import * as THREE from 'three'
 
-class WorldLighting extends OCTAVIA.Core.GameObjectComponent
+class WorldLighting extends OCTAVIA.Core.ScriptComponent
 {
     constructor (...args)
     {

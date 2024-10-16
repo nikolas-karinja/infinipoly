@@ -2,7 +2,7 @@ import { EVENTS, MATERIALS, OCTAVIA } from '@little-island/octavia-engine';
 import * as THREE from 'three'
 import { TerrainWaterGeometry } from './subclasses/TerrainWaterGeometry';
 
-class MainMenuModel extends OCTAVIA.Core.GameObjectComponent
+class MainMenuModel extends OCTAVIA.Core.ScriptComponent
 {
     constructor (...args)
     {
