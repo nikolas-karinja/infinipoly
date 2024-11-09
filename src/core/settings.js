@@ -16,7 +16,7 @@ export const GAME_SETTINGS = {
         currentZoomLevel: 0, // current zoom level that the camera controls are at (updated every frame)
         initTerrainChunkRadius: 7,
         isNewWorld: false, // value set to true when a brand-new world is created
-        macroZoomLevel: 20, // the zoom level when the macro-terrain should be visible
+        macroZoomLevel: 50, // the zoom level when the macro-terrain should be visible
         noiseAmplitude: 1.5,
         noiseAmplitudeCoef: 0.4,
         noiseFrequency: 175,

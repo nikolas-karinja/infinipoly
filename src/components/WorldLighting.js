@@ -17,15 +17,15 @@ class WorldLighting extends OCTAVIA.Core.ScriptComponent
 
     InitComponent ()
     {
-        // this.Sun.castShadow = true
-        // this.Sun.shadow.camera.left = -12
-        // this.Sun.shadow.camera.right = 12
-        // this.Sun.shadow.camera.top = 12
-        // this.Sun.shadow.camera.bottom = -12
-        // this.Sun.shadow.mapSize.width = 2048
-        // this.Sun.shadow.mapSize.height = 2048
-        // this.Sun.shadow.camera.near = 0.1
-        // this.Sun.shadow.camera.far = 50
+        this.SunLightComponent.Light.castShadow = true
+        this.SunLightComponent.Light.shadow.camera.left = -12
+        this.SunLightComponent.Light.shadow.camera.right = 12
+        this.SunLightComponent.Light.shadow.camera.top = 12
+        this.SunLightComponent.Light.shadow.camera.bottom = -12
+        this.SunLightComponent.Light.shadow.mapSize.width = 2048
+        this.SunLightComponent.Light.shadow.mapSize.height = 2048
+        this.SunLightComponent.Light.shadow.camera.near = 0.1
+        this.SunLightComponent.Light.shadow.camera.far = 50
 
         EVENTS.AddListener('chunk in view updated', () =>
         {
