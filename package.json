@@ -1,43 +1,24 @@
 {
   "name": "infinipoly",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@little-island/octavia-engine": "^0.0.72",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "sass": "^1.77.8",
-    "three": "^0.163.0",
-    "three-noise": "^1.1.2",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "update-engine": "npm uninstall --save @little-island/octavia-engine && npm i --save @little-island/octavia-engine@latest"
+      "start": "node server/index.js",
+      "build": "cd client && npm install && npm run build",
+      "push": "git add . && git commit -am \"Deploy app to Heroku\" && git push origin main",
+      "deploy": "npm run build && npm run push"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "engines": {
+      "npm": "8.x",
+      "node": "18.x"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+      "express": "^4.18.2",
+      "mongodb": "^6.1.0"
   }
 }
