@@ -10,7 +10,7 @@ export const OCTAVIA_ASSEMBLIES = {
                 fov      : 45,
                 size     : 40,
                 far      : 1000,
-                position : new THREE.Vector3(7, 21, 14),
+                position : new THREE.Vector3(14, 12, -14),
             },
             'Orbit Controls': {
                 screenSpacePanning : false,

@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
       "start": "node server/index.js",
+      "test": "cd client && npm start",
       "build": "cd client && npm install && npm run build",
       "push": "git add . && git commit -am \"Deploy app to Heroku\" && git push origin main",
       "deploy": "npm run build && npm run push"

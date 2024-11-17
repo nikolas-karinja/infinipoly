@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import Buttons from '../Buttons'
 import UIState from '../UIState'
 import { EVENTS } from '@little-island/octavia-engine'
+import TextBody from '../TextBody'
+
+import art_mainMenuTitle from '../../img/art/main_menu_title.png'
 
 const MainMenuState = () =>
 {
@@ -27,12 +30,24 @@ const MainMenuState = () =>
 
     return <UIState visible={visible}>
         <div className='MainMenu-module'>
-            <h1>Infinipoly</h1>
-            <h4>A sandbox game</h4>
+            <img className="mainMenuTitle"
+                src={art_mainMenuTitle}
+                alt="Title" />
+            <TextBody center>
+                A low-poly terrain generator using the Octavia Game Engine
+            </TextBody>
             <Buttons className='MainMenu-module--buttons'>
                 <button onMouseDown={onNewWorld}>New World</button>
                 <button>Load</button>
             </Buttons>
+            <TextBody center warning>
+                &#9888; Program is currently in the Alpha version and is not fully optimized
+                <br />
+                &#9888; Will not generate properly on mobile devices
+            </TextBody>
+            <TextBody center>
+                Developed by Nikolas Karinja
+            </TextBody>
         </div>
     </UIState>
 }
