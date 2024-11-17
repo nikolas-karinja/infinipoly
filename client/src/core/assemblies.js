@@ -16,6 +16,8 @@ export const OCTAVIA_ASSEMBLIES = {
                 screenSpacePanning : false,
                 leftMouseButton    : THREE.MOUSE.PAN,
                 rightMouseButton   : THREE.MOUSE.ROTATE,
+                touchesOne         : THREE.TOUCH.PAN,
+                touchesTwo         : THREE.TOUCH.DOLLY_ROTATE,
             },
             'Terrain': {},
             'World Lighting': {},
