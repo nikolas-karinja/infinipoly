@@ -42,8 +42,6 @@ const MainMenuState = () =>
             </Buttons>
             <TextBody center warning>
                 &#9888; Program is currently in the Alpha version and is not fully optimized
-                <br />
-                &#9888; Will not generate properly on mobile devices
             </TextBody>
             <TextBody center>
                 Developed by Nikolas Karinja
