@@ -153,10 +153,25 @@ img
     display: flex
     flex-direction: column
     margin: auto
-    padding: 8px
+    padding: 8px 0 8px 8px
     position: relative
-    width: 512px
+    width: 400px
     height: calc(100% - 16px)
+
+    &--settings
+        height: calc(100% - 132px) !important
+
+.ScrollBody-module
+    width: 100%
+    height: 100%
+    overflow-x: hidden
+    overflow-y: auto
+    
+    &.scrollX
+        overflow-x: auto
+
+    &.scrollY
+        overflow-y: auto
 
 .TextBody-module
     background: rgba(#000, 0.75)

@@ -7,6 +7,7 @@ import { GAME_SETTINGS } from "../../core/settings"
 import TextBody from "../TextBody"
 
 import art_newWorldTitle from '../../img/art/new_world_title.png'
+import ScrollBody from "../ScrollBody"
 
 const NewWorldSettingsState = () =>
 {
@@ -43,7 +44,8 @@ const NewWorldSettingsState = () =>
             <img className="newWorldTitle"
                 src={art_newWorldTitle}
                 alt="Title" />
-            <h4>Chunks</h4>
+            <ScrollBody className="NewWorldSettings-module--settings">
+                <h4>Chunks</h4>
             <TextBody>
                 For performance and speedy generation, the terrain is divided into segments called "Chunks". When you zoom into the terrain during gameplay, you will see what's called the "Detailed View". In this mode you can actually see the chunks disappearing and reappearing based on where the camera is located within the map.
             </TextBody>
@@ -121,6 +123,7 @@ const NewWorldSettingsState = () =>
                 step={0.5}
                 short
                 gameProperty={"vegetationSpreadSea"} />
+            </ScrollBody>
             <Buttons vert final>
                 <button onMouseDown={onBack}>Back</button>
                 <button onMouseDown={onCreate}>Create</button>
